@@ -25,7 +25,7 @@ class TypeConv {
 
         ob.ov(i);//Вызов метода ob.ov(int)
         ob.ov(d);//Вызов метода ob.ov(double)
-        ob.ov(b);//Вызов метода ob.ov(int) c преобразованием типов
+        ob.ov(b);//Вызов метода ob.ov(byte)
         ob.ov(s);//Вызов метода ob.ov(int) c преобразованием типов
         ob.ov(f);//Вызов метода ob.ov(double) c преобразованием типов
     }
