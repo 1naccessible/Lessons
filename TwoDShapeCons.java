@@ -3,10 +3,12 @@ public class TwoDShapeCons {
     private double height;
 
     double getWidth() {
+
         return width;
     }
 
     double getHeight() {
+
         return height;
     }
 
@@ -15,10 +17,12 @@ public class TwoDShapeCons {
     }
 
     void setHeight(double h) {
+
         height = h;
     }
 
     void showDim() {
+
         System.out.println("Width and Height " + width + " and " + height);
     }
 
