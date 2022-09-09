@@ -5,6 +5,8 @@ abstract class TwoDShapes {
     private double diam;
     private String name;
 
+    final double PI = 3.14;
+
     //Конструктор по умолчанию
     TwoDShapes() {
         width = height = 0;
@@ -153,7 +155,7 @@ class Circle extends TwoDShapes {
 
     @Override
     double area() {
-        return (getRad()*getRad()) * 3.14;
+        return (getRad()*getRad()) * PI;
     }
 }
 
