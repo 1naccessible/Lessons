@@ -1,6 +1,8 @@
 abstract class TwoDShapes {
     private double width;
     private double height;
+
+    private double diam;
     private String name;
 
     //Конструктор по умолчанию
@@ -19,7 +21,7 @@ abstract class TwoDShapes {
 
     //Создать обьект с одинаковыми значениями переменных экземпляра width и height
     TwoDShapes(double x, String n) {
-        width = height = x;
+        width = height = diam = x;
         name = n;
     }
 
@@ -35,6 +37,14 @@ abstract class TwoDShapes {
         return width;
     }
 
+    double getDiam(){
+        return diam;
+    }
+
+    double getRad(){
+        return (getDiam()/2);
+    }
+
     double getHeight() {
         return height;
     }
@@ -47,6 +57,10 @@ abstract class TwoDShapes {
         height = h;
     }
 
+    void setDiam(double d){
+        diam = d;
+    }
+
     String getName() {
         return name;
     }
@@ -55,7 +69,7 @@ abstract class TwoDShapes {
         System.out.println("width and height: " + width + " and " + height);
     }
 
-   abstract double area();
+    abstract double area();
 }
 
 //Подкласс для представления треугольника
@@ -132,6 +146,17 @@ class Rectangles extends TwoDShapes {
     }
 }
 
+class Circle extends TwoDShapes {
+    Circle(int w, String n) {
+        super(w, n);
+    }
+
+    @Override
+    double area() {
+        return (getRad()*getRad()) * 3.14;
+    }
+}
+
 class DynShapes {
     public static void main(String[] args) {
         TwoDShapes shapes[] = new TwoDShapes[5];
@@ -140,9 +165,10 @@ class DynShapes {
         shapes[1] = new Rectangles(10);
         shapes[2] = new Rectangles(10, 4);
         shapes[3] = new Triangles(7);
+        shapes[4] = new Circle(5,"Circle");
 
 
-        for (int i = 0; i < shapes.length - 1; i++) {
+        for (int i = 0; i < shapes.length; i++) {
             System.out.println("Object - " + shapes[i].getName());
             System.out.println("Area - " + shapes[i].area());
             System.out.println();
