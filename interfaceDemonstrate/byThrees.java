@@ -23,5 +23,4 @@ public class byThrees implements Series {
         start = x;
         val = x;
     }
-
 }
