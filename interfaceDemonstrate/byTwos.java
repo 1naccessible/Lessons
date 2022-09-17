@@ -57,4 +57,5 @@ class byTwosDemo extends byTwos {
             System.out.println("Next value - " + ob.getNext());
         }
     }
+
 }
