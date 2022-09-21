@@ -1,21 +1,26 @@
 package ICharQ;
 
 public class IQDemo {
+    static void cop(char x, char y, char u){
+
+    }
     public static void main(String[] args) {
+
+
         FixedQueue q1 = new FixedQueue(12);
         DynQueue q2 = new DynQueue(10);
         CircularQueue q3 = new CircularQueue(10);
-
         ICharQ iQ;
-
         char ch;
         int i;
+
 
         iQ = q1;
 
         for (i = 0; i < 10; i++) {
             iQ.put((char) ('A' + i));
         }
+        q1.reset();
 
         System.out.println("Содержимое фиксированной очереди: ");
         for (i = 0; i < 10; i++) {
@@ -27,12 +32,9 @@ public class IQDemo {
 
         iQ = q2;
 
-        for (i = 0; i < 10; i++) {
-            iQ.put((char) ('Z' - i));
-        }
-
         System.out.println("Содержимое динамической очереди: ");
-        for (i = 0; i < 10; i++) {
+        for (i = 0; i < 11; i++) {
+            iQ.put((char) ('Z' - i));
             ch = iQ.get();
             System.out.print(ch);
         }
@@ -58,5 +60,6 @@ public class IQDemo {
             ch = iQ.get();
             System.out.print(ch);
         }
+
     }
 }

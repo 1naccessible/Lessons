@@ -4,12 +4,14 @@ package ICharQ;
 //для хранения символов
 public class FixedQueue implements ICharQ {
     private char q[]; //Массив для хранения элементов очереди
+    private char r[];
     private int putLoc, getLoc; //Индексы всталяемых и извлекаемых елементов
 
     //Создать пустую очередь заданного размера
     public FixedQueue(int size) {
         q = new char[size - 1]; // Выделить память для очереди
         putLoc = getLoc = 0;
+        r = new char[size - 1];
     }
 
     //Поместить символ в очередь
@@ -24,13 +26,19 @@ public class FixedQueue implements ICharQ {
     }
 
     //Извлечт символ из очереди
+
     public char get() {
         if (getLoc == putLoc) {
             System.out.println(" - Очередь пуста");
-            return (char) 0;
+            return ' ';
         }
 
         getLoc++;
         return q[getLoc];
     }
+
+    public void reset(){
+        q = r;
+    }
+
 }

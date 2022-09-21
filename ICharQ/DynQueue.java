@@ -2,14 +2,16 @@ package ICharQ;
 
 public class DynQueue implements ICharQ {
     private char q[];
+    private char r[];
     private int getLoc, putLoc;
 
     public DynQueue(int size) {
         q = new char[size + 1];
         getLoc = putLoc = 0;
+        r = new char[size + 1];
     }
 
-    public void put(char ch) {
+    public void put(char ch) { //Поместить символ в очередь
         if (putLoc == q.length - 1) {
             char t[] = new char[q.length * 2];
             for (int i = 0; i < q.length; i++) {
@@ -33,5 +35,8 @@ public class DynQueue implements ICharQ {
 
         getLoc++;
         return q[getLoc];
+    }
+    public void reset(){
+        q = r;
     }
 }
