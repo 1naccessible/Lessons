@@ -1,15 +1,18 @@
-public class Vehicle { //создаю класс который инкапсулирует переменные экземпляра
+public class Vehicle implements IVehicle { //создаю класс который инкапсулирует переменные экземпляра
     int passengers; //количество пассажиров
     int fuelcap; // емкость топливного бака
     int mpg; // потребление топлива в миллях на галлон
 
-    int range() { //определить максимальную дальность поездки транспорта
+    public int range() { //определить максимальную дальность поездки транспорта
         return mpg * fuelcap;
     }
 
-    double fuelneeded(int miles) { //расчитать обьем топлива необходимого
+    @Override
+    public double fuelneeded(int miles) { //расчитать обьем топлива необходимого
         // транспорту для проезда заданного расстояния
         return (double) miles / mpg;
+
+
     }
 
 }
