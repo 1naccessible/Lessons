@@ -1,3 +1,15 @@
+class CantPushSymbolInStackException extends Exception{
+    @Override
+    public String toString() {
+        return "Невозможно добавить символ в стек. Стек переполнен!";
+    }
+}
+class CantGetSymbolFromStackException extends Exception{
+    @Override
+    public String toString() {
+        return "Невозможно достать символ из стека. Стек пуст!";
+    }
+}
 public class Stack {
     private char sym[];
     private int putloc, getloc;
@@ -8,20 +20,18 @@ public class Stack {
         getloc = size;
     }
 
-    void push(char symbol) {
+    void push(char symbol) throws CantPushSymbolInStackException{
         if (putloc == sym.length - 1) {
-            System.out.println("\nStack is full");
-            return;
+            throw new CantPushSymbolInStackException();
         }
         putloc++;
         sym[putloc] = symbol;
         System.out.print("\n" + sym[putloc]);
     }
 
-    char pop() {
+    char pop() throws CantGetSymbolFromStackException {
         if (getloc == 1) {
-            System.out.println("\nStack is empty");
-            return ' ';
+            throw new CantGetSymbolFromStackException();
         }
         getloc--;
         return sym[getloc];
@@ -36,13 +46,20 @@ class StackDemo {
         System.out.println("in stack inputed symbols:");
         for (int i = 0; i < 10; i++) {
             line++;
-            demonstrator.push(line);
+            try {
+                demonstrator.push(line);
+            }catch (CantPushSymbolInStackException e){
+                System.out.println(e);
+            }
             symbols++;
         }
         System.out.println();
         System.out.println("from stack gated symbols:");
         for (int i = 0; i <= symbols - 1; i++)
-            System.out.println(demonstrator.pop());
-
+            try {
+                System.out.println(demonstrator.pop());
+            }catch (CantGetSymbolFromStackException e){
+                System.out.println(e);
+            }
     }
 }
