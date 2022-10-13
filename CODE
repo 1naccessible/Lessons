@@ -1591,7 +1591,12 @@ int read(byte data[], int start, int max) throws IOException
 Методы println() и print() определенны в классе PrintStream который наследуеться от класса OutputStream
 Так как на обьекты данного потока ссылаеться переменная потока System.out он может
 реализовать метод write определенный в классе OutputStream
-пример показан в классе
+пример показан в классе WriteDemo
+
+С помощью метода ptintf() можно форматировать строки
+пример в классе PrintfDemo
+
+
 
 
 
