@@ -1,29 +1,29 @@
 package InputOutput;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.PrintStream;
-import java.util.Scanner;
+import java.io.*;
+
 
 public class ShowFile {
-    public static void main(String[] args) {
-        String text = "Some text whose need to write in file";
-        try {
-            FileOutputStream test = new FileOutputStream("C:\\Users\\alexp\\Desktop\\EDC RPG\\ИСЗ\\Code1.txt", false);
+    public static void main(String[] args) throws Exception {
+        String text = "Some text whose need to write in file \nByte \nRead";
+
+        FileOutputStream test = new FileOutputStream("C:\\Users\\alexp\\Desktop\\EDC RPG\\ИСЗ\\Code1.txt", false);
+        FileInputStream inputStream = new FileInputStream("C:\\Users\\alexp\\Desktop\\EDC RPG\\ИСЗ\\Code1.txt");
+
+        try(test; inputStream) {
             byte buf[] = text.getBytes();
+
             test.write(buf);
-            FileInputStream inputStream = new FileInputStream("C:\\Users\\alexp\\Desktop\\EDC RPG\\ИСЗ\\Code1.txt");
 
-                test.close();
-                Scanner sc = new Scanner(inputStream);
+            int a = 0;
+            while (a != -1) {
+                int i = inputStream.read();
+                if (i != -1) {
+                    System.out.print((char) i);
+                } else break;
 
-                while (sc.hasNext()){
-                    System.out.print(sc.next() + "\r\n");
-                }
-
-
-        }catch (Exception e){
+            }
+        } catch (Exception e) {
             System.err.print(e.getMessage());
         }
     }
