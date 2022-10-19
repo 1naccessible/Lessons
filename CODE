@@ -1645,6 +1645,20 @@ RandomAccessFile(Strig имя_файла, String доступ) throws FileNotFou
 void seek(long новая_позиция) throws IOException
 пример в классе RandomAccessDemo
 
+Для ввода символов с клавиатуры проще и удобнее использовать символьные потоки.
+Для этого лучше всего подходит класс BufferedReader
+для того что бы создать такой поток неомходимо байтовый поток ввода System.in преобразовать в символьний
+с помощью класса InputStreamReader преобразовывающий байтовые потоки в символьные.
+вот такая конструкция преобразования байтового потока в символьный:
+InputStreamReader(InputStream inputStream)
+по скольку поток System.in являеться экземпляром класса InputStream, его можно указать в качестве параметра
+класса InputStreamReader.
+Пример создания обьекта класса BufferedReader:
+BufferedReader name = new BufferedReader(new InputStreamReader(System.in))
+Пример чтения символов с консоли в классе ReadChars
+Пример чтения строк с консоли в классе ReadLines
+
+
 
 
 
