@@ -1658,6 +1658,33 @@ BufferedReader name = new BufferedReader(new InputStreamReader(System.in))
 Пример чтения символов с консоли в классе ReadChars
 Пример чтения строк с консоли в классе ReadLines
 
+Для консольного вывода можно использовать класс PrintWriter
+пример создания обьекта типа PrintWriter:
+PrintWriter name = new PrintWriter(OutputStream outputStrem, boolean autoFlush)
+OutputStream outputStrem - обьект типа OutputStream для того что бы связать обьект типа PrintWriter c консолью
+можно использовать System.out
+autoFlush - параметр который принимает значения типа bool. Если true поток автоматически закроеться не дожидаясь
+переполнения буфера и данные выведуться в консоль. В ином случае поток не будет закрыт и данные не выведуться,
+в таком случае для вывода прийдеться закрывать поток вручную что бы данные вывелись в консоль.
+пример в классе PrintWriter
+
+Класс FileWriter создает объект типа Writer, который можно использовать для записи данных в файл.
+Ниже приведены общие формы объявления двух наиболее часто используемых конструкторов данного класса.
+FileWriter(String имя_файла) throws IOException
+FileWriter(String имя_файла, boolean append) throws IOException
+Класс FileWriter являеться производным от классов OutputStreamWriter и Writer, по этому в нем доступны все методы
+этих суперклассов
+пример использования данного класса в классе KtoD
+
+Класс FileReader создает объект типа Reader, который можно использовать для
+чтения содержимого файла. Чаще всего используется следующая форма конструктора
+этого класса:
+FileReader(String имя_файла) throws FileNotFoundException
+Класс FileReader является производным от классов InputStreamReader и Reader.
+Следовательно, в нем доступны методы, объявленные в его суперклассах.
+В классе DtoS для потока FileReader создаеться оболочка класса BufferedReader что дает возможность обращаться
+к методам класса BufferedReader, в том числе и к методу readLine()
+Пример использования данного класса в классе DtoS
 
 
 
