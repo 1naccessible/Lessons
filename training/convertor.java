@@ -35,7 +35,7 @@ class Solution {
                 }
             } else break;
             indexFrom = indexOne;
-         }
+        }
         s = s.replace("_", "");
         return s;
     }
