@@ -35,7 +35,7 @@ class Solution {
                 }
             } else break;
             indexFrom = indexOne;
-        }
+         }
         s = s.replace("_", "");
         return s;
     }
@@ -56,5 +56,5 @@ class SolutionDemo {
                 System.out.println();
                 System.out.println(Solution.toCamelCase(s));
 
-            }
+             }
     }
