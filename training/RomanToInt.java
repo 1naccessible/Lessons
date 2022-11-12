@@ -66,7 +66,7 @@ public class RomanToInt {
 
 class DemoBoy extends RomanToInt {
     public static void main(String[] args) {
-        String v = "D";
+        String v = "ICXXICIV";
         System.out.println(romanToInt(v));
     }
 }
