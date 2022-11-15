@@ -25,16 +25,15 @@ class MyThreadsDemo{
         MyThreads mt1 = new MyThreads("FirstStream");
         MyThreads mt2 = new MyThreads("SecondStream");
         MyThreads mt3 = new MyThreads("ThirdStream");
+do {
+    try {
+        Thread.sleep(100);
 
-        try {
-            for (int i = 0; i< 50; i++){
-                Thread.sleep(100);
-                System.out.print(".");
-            }
-        }catch (InterruptedException e){
-            System.out.println(e);
-            System.out.println("Main stream stopped");
-        }
+    } catch (InterruptedException e) {
+        System.out.println(e);
+        System.out.println("Main stream stopped");
+    }
+}while (mt1.isAlive() || mt2.isAlive() || mt3.isAlive());
         System.out.println("Main stream ends");
     }
 }
