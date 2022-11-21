@@ -16,9 +16,9 @@ public class TickTock {
         notify();
 
         try {
-            while (state.equals("toked")) {
+
                 wait();
-            }
+
         }catch (InterruptedException e){
             System.out.println("stream stoped" + e);
         }
@@ -37,9 +37,9 @@ public class TickTock {
         notify();
 
         try {
-            while (state.equals("tiked")) {
+
                 wait();
-            }
+
         }catch (InterruptedException e){
             System.out.println("stream stoped" + e);
         }
