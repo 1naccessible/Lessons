@@ -33,7 +33,11 @@ public class TickTock {
         System.out.println("Tock");
 
         state = "tocked";
-
+        try {
+            wait(1000);
+        }catch (InterruptedException e){
+            System.out.println(e);
+        }
         notify();
 
         try {
