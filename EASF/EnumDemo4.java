@@ -9,7 +9,7 @@ public class EnumDemo4 {
         System.out.println("Константы перечисления Transport и их порядковые значения");
 
         for (Transport t: Transport.values()){
-            System.out.println("Порядковое значение у - " + t + " = " + t.ordinal());
+            System.out.println("Порядковое значение " + t + " = " + t.ordinal());
         }
 
         tp1 = Transport.AIRPLANE;
