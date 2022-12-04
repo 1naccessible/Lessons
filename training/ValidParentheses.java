@@ -9,20 +9,16 @@ public class ValidParentheses {
             return false;
         } else {
             for (char x : buff) {
-                if (x == '(') {
+                if(x == '(' || x == '[' || x == '{'){
                     note += 1;
-                } else if (x == ')') {
+                }else {
                     note -= 1;
-                } else if (x == '[') {
-                    note += 2;
-                } else if (x == ']') {
-                    note -= 2;
-                } else if (x == '{') {
-                    note += 3;
-                } else if (x == '}') {
-                    note -= 3;
+                }
+                if (note == -1){
+                    break;
                 }
             }
+
         }
         if (note == 0){
             ans = true;
