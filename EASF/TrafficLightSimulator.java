@@ -2,11 +2,12 @@ package EASF;
 
 public class TrafficLightSimulator implements Runnable {
     private Thread thrd;
-    private TrafficLightColor tlc;
+    private TrafficLightColor currentColor = TrafficLightColor.YELLOW;
+    private int tlc;
     private boolean stop = false;
     private boolean change = false;
 
-    TrafficLightSimulator(TrafficLightColor init) {
+    TrafficLightSimulator(int init) {
         tlc = init;
 
         thrd = new Thread(this);
@@ -14,20 +15,17 @@ public class TrafficLightSimulator implements Runnable {
     }
 
     TrafficLightSimulator() {
-        tlc = TrafficLightColor.RED;
+        tlc = TrafficLightColor.RED.ordinal();
 
         thrd = new Thread(this);
         thrd.start();
+
     }
 
     public void run() {
         while (!stop) {
             try {
-                switch (tlc) {
-                    case RED -> Thread.sleep(10000);
-                    case GREEN -> Thread.sleep(12000);
-                    case YELLOW -> Thread.sleep(4000);
-                }
+                Thread.sleep(currentColor.getDelay());
             } catch (InterruptedException e) {
                 System.out.println(e);
             }
@@ -36,12 +34,20 @@ public class TrafficLightSimulator implements Runnable {
     }
 
     synchronized void changeColor(){
-        switch (tlc){
-            case RED -> tlc = TrafficLightColor.YELLOW;
-            case YELLOW -> tlc = TrafficLightColor.GREEN;
-            case GREEN -> tlc = TrafficLightColor.RED;
-        }
+
+            if(tlc == TrafficLightColor.RED.ordinal()){
+                tlc = TrafficLightColor.YELLOW.ordinal();
+                currentColor = TrafficLightColor.YELLOW;
+            }else if (tlc == TrafficLightColor.YELLOW.ordinal()){
+                tlc = TrafficLightColor.GREEN.ordinal();
+                currentColor = TrafficLightColor.GREEN;
+            }else {
+                tlc = TrafficLightColor.RED.ordinal();
+                currentColor = TrafficLightColor.RED;
+            }
+
         change = true;
+
         notify();
     }
 
@@ -57,7 +63,7 @@ public class TrafficLightSimulator implements Runnable {
     }
 
     TrafficLightColor getColor(){
-        return tlc;
+        return currentColor;
     }
 
     void cancel(){
