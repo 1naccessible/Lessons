@@ -14,5 +14,8 @@ public class VarArgs {
         vaTest(10);         //1 аргумент
         vaTest(5,2,4);      //3 аргумента
         vaTest();               //без аргументов
+        int c = 0;
+        String str1 = "1000";
+        System.out.println(Integer.parseInt(str1));
     }
 }
