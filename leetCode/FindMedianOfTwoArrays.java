@@ -1,4 +1,4 @@
-package training;
+package leetCode;
 
 import java.util.Arrays;
 

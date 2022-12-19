@@ -1,6 +1,4 @@
-package training;
-
-import java.util.Arrays;
+package leetCode;
 
 // FIXME: 15.12.2022 / 16.12.2022
 public class DeleteDuplicates {

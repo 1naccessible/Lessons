@@ -1,4 +1,4 @@
-package training;
+package leetCode;
 
 public class Reverse {
     public static int reverse(int x) {

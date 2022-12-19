@@ -1,4 +1,4 @@
-package training;
+package leetCode;
 
 public class PalindromNum {
     public static boolean isPalindrome(int x) {

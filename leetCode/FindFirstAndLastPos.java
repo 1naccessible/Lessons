@@ -1,8 +1,6 @@
-package training;
+package leetCode;
 
-import java.util.Arrays;
-
-// FIXME: 16.12.2022 
+// FIXME: 16.12.2022
 public class FindFirstAndLastPos {
     public static int[] searchRange(int[] nums, int target) {
         int[] nFalse = {-1, -1};

@@ -1,4 +1,4 @@
-package training;
+package leetCode;
 
 public class FirstOccurrenceIndex {
     public static int strStr(String haystack, String needle) {

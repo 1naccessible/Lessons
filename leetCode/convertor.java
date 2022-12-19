@@ -1,4 +1,4 @@
-package training;
+package leetCode;
 
 class Solution {
     static String toCamelCase(String s) {

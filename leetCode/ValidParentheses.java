@@ -1,4 +1,4 @@
-package training;
+package leetCode;
 
 public class ValidParentheses {
     public static boolean isValid(String s) {

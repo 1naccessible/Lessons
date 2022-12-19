@@ -1,4 +1,4 @@
-package training;
+package leetCode;
 
 public class MyPowSol {
     public static double myPow(double x, int n) {

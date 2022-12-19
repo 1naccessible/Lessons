@@ -1,4 +1,4 @@
-package training;
+package leetCode;
 
 public class RomanToInt {
     public static int romanToInt(String s) {
