@@ -1,15 +1,16 @@
-package EASF;
+package generics;
 
-public class Pair <T, V extends T>{
+public class Pair<T, V extends T> {
     T first;
     V second;
 
-    Pair(T obT, V obV){
+    Pair(T obT, V obV) {
         first = obT;
         second = obV;
     }
 }
-class PairDemo{
+
+class PairDemo {
     public static void main(String[] args) {
         // Эта строка кода верна, поскольку Т и V имеют тип Integer
         Pair<Integer, Integer> integerIntegerPair = new Pair<Integer, Integer>(1, 2);
@@ -22,3 +23,4 @@ class PairDemo{
         //Pair<Number, String> z = new Pair<Number, String>(10.4, "12");
     }
 }
+

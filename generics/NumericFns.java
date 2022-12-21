@@ -1,7 +1,6 @@
-package EASF;
+package generics;
 
-public class NumericFns<T extends Number> {
-    T ob;
+public class NumericFns <T extends Number> {    T ob;
 
     NumericFns(T o){
         ob = o;

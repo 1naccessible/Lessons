@@ -1,4 +1,4 @@
-package EASF;
+package generics;
 
 public class TwoGen<I,S> {
     I iOb;
