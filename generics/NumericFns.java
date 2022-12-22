@@ -1,17 +1,25 @@
 package generics;
 
-public class NumericFns <T extends Number> {    T ob;
+public class NumericFns<T extends Number> {
+    T ob;
 
-    NumericFns(T o){
+    NumericFns(T o) {
         ob = o;
     }
 
-    double reciprocal(){
-        return 1/ob.doubleValue();
+    double reciprocal() {
+        return 1 / ob.doubleValue();
     }
 
-    double fraction(){
+    double fraction() {
         return ob.doubleValue() - ob.intValue();
+    }
+
+    boolean absEquals(NumericFns<?> ob) {
+        if (Math.abs(this.ob.doubleValue()) == Math.abs(ob.ob.doubleValue())){
+            return true;
+        }
+        return false;
     }
 
 }
@@ -27,11 +35,14 @@ class BoundsDemo {
 
         System.out.println();
 
-        NumericFns<Double> doubleOb = new NumericFns<>(5.25); ////Тип допустим так как являеться подклассом Number
+        NumericFns<Double> doubleOb = new NumericFns<>(-5.0); ////Тип допустим так как являеться подклассом Number
 
         System.out.println("reciprocal value doubleOb = " + doubleOb.reciprocal());
 
         System.out.println("fractional part doubleOb = " + doubleOb.fraction());
+
+        System.out.println(intOb.absEquals(doubleOb));
+
 
         //NumericFns<String> doubleOb = new NumericFns<>("String"); - не допустимая строка так как используеться
         //ограние типов до классов наследуемых от класса Number, или самого класса Number
