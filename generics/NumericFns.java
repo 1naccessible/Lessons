@@ -37,11 +37,14 @@ class BoundsDemo {
 
         NumericFns<Double> doubleOb = new NumericFns<>(-5.0); ////Тип допустим так как являеться подклассом Number
 
+        NumericFns<Long> longNumericFns = new NumericFns<>(5L);
+
         System.out.println("reciprocal value doubleOb = " + doubleOb.reciprocal());
 
         System.out.println("fractional part doubleOb = " + doubleOb.fraction());
 
         System.out.println(intOb.absEquals(doubleOb));
+        System.out.println(doubleOb.absEquals(longNumericFns));
 
 
         //NumericFns<String> doubleOb = new NumericFns<>("String"); - не допустимая строка так как используеться
