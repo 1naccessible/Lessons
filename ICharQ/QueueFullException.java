@@ -3,7 +3,7 @@ package ICharQ;
 public class QueueFullException extends Exception{
     int size;
 
-    QueueFullException(int i){
+    public QueueFullException(int i){
         size = i;
     }
 
