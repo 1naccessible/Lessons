@@ -1,34 +1,30 @@
 package leetCode;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Stack;
+
 public class ValidParentheses {
     public static boolean isValid(String s) {
-        boolean ans = false;
-        char[] buff = s.toCharArray();
-        int note = 0;
-        if (buff.length % 2 != 0) {
+        if (s.length() % 2 != 0 || s.startsWith(")") || s.startsWith("]") || s.startsWith("}")) {
             return false;
-        } else {
-            for (char x : buff) {
-                if(x == '(' || x == '[' || x == '{'){
-                    note += 1;
-                }else {
-                    note -= 1;
-                }
-                if (note == -1){
-                    break;
-                }
+        }
+        int accumulator = 0;
+        StringBuilder stringBuilder = new StringBuilder(s);
+        for (int i = s.length() - 2; i > 0; i--) {
+            if (stringBuilder.charAt(0) == '(' && stringBuilder.charAt(i) == ')' || stringBuilder.charAt(0) == '[' && stringBuilder.charAt(i) == ']' || stringBuilder.charAt(0) == '{' && stringBuilder.charAt(i) == '}') {
+                stringBuilder.deleteCharAt(0);
+                stringBuilder.deleteCharAt(i);
+                accumulator++;
             }
-
         }
-        if (note == 0){
-            ans = true;
-        }
-        return ans;
+        if (accumulator == stringBuilder.length() / 2) return true;
+        return false;
     }
 }
 
 class DemoVP {
     public static void main(String[] args) {
-        System.out.println(ValidParentheses.isValid("(()[]{})"));
+        System.out.println(ValidParentheses.isValid("()[]{}"));
     }
 }

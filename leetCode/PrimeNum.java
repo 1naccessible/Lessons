@@ -5,8 +5,7 @@ import java.util.*;
 public class PrimeNum {
     public boolean containsDuplicate(int[] nums) {
         Set<Integer> searchDup = new HashSet<>();
-        for (int x:
-             nums) {
+        for (int x: nums) {
             searchDup.add(x);
         }
         if (searchDup.size() < nums.length){
