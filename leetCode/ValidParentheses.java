@@ -1,30 +1,86 @@
 package leetCode;
 
-import java.util.ArrayList;
-import java.util.List;
+
+
 import java.util.Stack;
 
 public class ValidParentheses {
     public static boolean isValid(String s) {
-        if (s.length() % 2 != 0 || s.startsWith(")") || s.startsWith("]") || s.startsWith("}")) {
+        if (s.startsWith(")") || s.startsWith("}") || s.startsWith("]") || (s.length() % 2) != 0 || s.length() == 0) {
             return false;
         }
-        int accumulator = 0;
-        StringBuilder stringBuilder = new StringBuilder(s);
-        for (int i = s.length() - 2; i > 0; i--) {
-            if (stringBuilder.charAt(0) == '(' && stringBuilder.charAt(i) == ')' || stringBuilder.charAt(0) == '[' && stringBuilder.charAt(i) == ']' || stringBuilder.charAt(0) == '{' && stringBuilder.charAt(i) == '}') {
-                stringBuilder.deleteCharAt(0);
-                stringBuilder.deleteCharAt(i);
-                accumulator++;
+        char[] buff = s.toCharArray();
+        Stack<Character> characterStack = new Stack<>();
+        for (char character : buff) {
+            switch (character) {
+                case '(', '{', '[' -> characterStack.push(character);
+                case ')' -> {
+                    if (!characterStack.isEmpty() && characterStack.lastElement() == '(') {
+                        characterStack.pop();
+                    } else characterStack.push(character);
+                }
+                case ']' -> {
+                    if (!characterStack.isEmpty() && characterStack.lastElement() == '[') {
+                        characterStack.pop();
+                    } else characterStack.push(character);
+                }
+                case '}' -> {
+                    if (!characterStack.isEmpty() && characterStack.lastElement() == '{') {
+                        characterStack.pop();
+                    } else characterStack.push(character);
+                }
             }
         }
-        if (accumulator == stringBuilder.length() / 2) return true;
-        return false;
+        return characterStack.isEmpty();
     }
 }
 
 class DemoVP {
     public static void main(String[] args) {
-        System.out.println(ValidParentheses.isValid("()[]{}"));
+        String s = "[](){}";
+        System.out.println(ValidParentheses.isValid(s));
+        System.out.println(ValidParenthesesMaksVersion.isValidMaksVersion(s));
     }
 }
+
+class ValidParenthesesMaksVersion {
+    public static boolean isValidMaksVersion(String s) {
+        StringBuilder stringBuilder = new StringBuilder(s);
+            switch (stringBuilder.charAt(1)) {
+                case ')' -> forCircleBracket(stringBuilder);
+                case '}' -> forCurlyBracket(stringBuilder);
+                case ']' -> forSquareBracket(stringBuilder);
+
+        }
+    if (stringBuilder.length() == 0) {
+        return true;
+    }
+    return isValidMaksVersion(stringBuilder.toString());
+    }
+
+    private static void forCircleBracket(StringBuilder s) {
+        if (s.indexOf(")")-1 == s.indexOf("(")){
+            deletePair(s.indexOf("("),s.indexOf(")"), s);
+        }
+    }
+
+    private static void forCurlyBracket(StringBuilder s) {
+        if (s.indexOf("}")-1 == s.indexOf("{")){
+            deletePair(s.indexOf("{"),s.indexOf("}"), s);
+        }
+    }
+
+    private static void forSquareBracket(StringBuilder s) {
+        if (s.indexOf("]")-1 == s.indexOf("[")){
+            deletePair(s.indexOf("["),s.indexOf("]"), s);
+        }
+    }
+
+
+    private static void deletePair(int indexFirst, int indexLast, StringBuilder s) {
+        s.deleteCharAt(indexFirst);
+        s.deleteCharAt(indexLast-1);
+
+    }
+}
+
