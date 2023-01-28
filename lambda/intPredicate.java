@@ -33,7 +33,7 @@ class MethodRefDemo{
 
     public static void main(String[] args) {
         boolean result;
-        result = numTest(MyIntPredicate::isPrime, 17);
+        result = MyIntPredicate.isPrime(17);
         if (result){
             System.out.println("17 - simple number");
         }
