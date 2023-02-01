@@ -4,7 +4,7 @@ import java.util.*;
 
 public class JavaStringCalculator {
     public static int calculate(String s) {
-        int answer = 0;
+        int answer;
         List<Character> characterList = new ArrayList<>();
         for (char ch : s.toCharArray()) {
             characterList.add(ch);
@@ -28,6 +28,6 @@ public class JavaStringCalculator {
     }
 
     public static void main(String[] args) {
-        System.out.println(calculate("1+2+3"));
+        System.out.println(calculate("1-(2+3)"));
     }
 }
