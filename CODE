@@ -2179,7 +2179,40 @@ NumericTestDemo
 ссылка на который и передаеться функциональному интерфейсу
 Пример показан в классе ConsRefDemo
 
+Основыне функциональные интерфейсы:
 
+interface Consumer<T>{
+    void accept(T t);
+
+    default Consumer<T> andThen(Consumer<T> after) { ... }
+    Возвращает составной Consumer, который выполняет в следующем порядке эту операцию и операцию after.
+}
+
+interface Suplier<T>{
+   T get();
+}
+
+interface Predicate<T>{
+    boolean test(T t);
+
+    default Predicate<T> and(Predicate<T> other) { ... }
+    default Predicate<T> negate() { ... }
+    default Predicate<T> or(Predicate<T> other) { ... }
+     для комбинирования и инвертирования предикатов.
+}
+
+interface Function<T,R>{
+    R apply(T t);
+
+
+    default <V> Function<V, R> compose(Function<V, T> before) { ... }
+    возвращает составную функцию, которая сначала применяет переданную функцию к входным данным,
+    а затем выполняет эту функцию.
+
+
+    default <V> Function<T, V> andThen(Function<R, V> after) { ... }
+    возвращает составную функцию, которая выполняет эту функцию и затем применяет переданную функцию.
+}
 
 
 
