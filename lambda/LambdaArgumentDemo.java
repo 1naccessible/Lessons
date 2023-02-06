@@ -1,10 +1,10 @@
 package lambda;
-interface StringFunc{
-    String func(String s);
+interface StringFunc<S>{
+    S func(S s);
 }
 
 public class LambdaArgumentDemo {
-    static String changeStr(StringFunc sf, String s){
+    static String changeStr(StringFunc<String> sf, String s){
         return sf.func(s);
     }
 
@@ -12,7 +12,7 @@ public class LambdaArgumentDemo {
         String inStr = "лямбда выражениыя расширяют Java";
         String outStr;
 
-        StringFunc reverse = s -> {
+        StringFunc<String> reverse = s -> {
             String result = "";
             for (int i = s.length()-1; i >= 0 ; i--) {
                 result += s.charAt(i);
@@ -44,6 +44,9 @@ public class LambdaArgumentDemo {
             }
             return result;
         }, inStr);
+        System.out.println(outStr);
+
+        outStr = changeStr(n -> n.replace(" ", ""), inStr);
         System.out.println(outStr);
     }
 }

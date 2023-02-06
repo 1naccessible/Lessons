@@ -15,6 +15,15 @@ public class MyIntNum {
     boolean isFactor (int n){
         return (v%n) == 0;
     }
+
+    boolean hasCommonFactor(int n){
+        for (int i = 2; i <= v || i <=n; i++) {
+            if (n % i == 0 && v % i == 0){
+                return true;
+            }
+        }
+        return false;
+    }
 }
 
 class InstanceMethodRefDemo{
@@ -28,7 +37,7 @@ class InstanceMethodRefDemo{
 
         result = ip.test(3);
         if(result){
-            System.out.printf("3 Is divider for " + myIntNum1.getV());
+            System.out.println("3 Is divider for " + myIntNum1.getV());
         }
 
         ip = myIntNum2::isFactor;
@@ -36,5 +45,9 @@ class InstanceMethodRefDemo{
         if (result){
             System.out.printf("3 Is divider for " + myIntNum2.getV());
         }
+
+        ip = myIntNum1::hasCommonFactor;
+        result = ip.test(3);
+        System.out.println("\n" + result);
     }
 }
