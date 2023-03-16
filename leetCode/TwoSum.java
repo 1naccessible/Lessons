@@ -1,16 +1,18 @@
 package leetCode;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class TwoSum {
     public static int[] twoSum(int[] nums, int target) {
-        int[] ind = {0, 0};
-
-        return ind;
-    }
-}
-
-class DemoTwoSum {
-    public static void main(String[] args) {
-        int[] nums = {1,1};
-        TwoSum.twoSum(nums, 6);
+        Map<Integer, Integer> buffer = new HashMap<>();
+        for (int i = 0; i < nums.length; i++) {
+            if (buffer.containsKey(nums[i])){
+                return new int[]{buffer.get(nums[i]), i};
+            }else {
+                buffer.put(target-nums[i], i);
+            }
+        }
+        return new int[]{0, 0};
     }
 }
